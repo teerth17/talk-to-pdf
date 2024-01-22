@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import TextEditing from './TextEditing';
 
-const SpeechRecognitionComponent = () => {
+const SpeechRecognitionComponent = ({onTranscriptionChange}) => {
   const {
     transcript,
       browserSupportsSpeechRecognition,
@@ -12,7 +13,13 @@ const SpeechRecognitionComponent = () => {
     if (!browserSupportsSpeechRecognition) {
         // Render some fallback content
         return null
-    }
+  }
+  
+   useEffect(() => {
+    onTranscriptionChange(transcript);
+   }, [transcript, onTranscriptionChange]);
+  
+  
     console.log(transcript)
   const handleStart = () => {
      SpeechRecognition.startListening({
@@ -32,7 +39,7 @@ const SpeechRecognitionComponent = () => {
   return (
     <div>
       <h2>Speech Recognition</h2>
-      <p>Transcript: {transcript}</p>
+      <p >Transcript: {transcript}</p>
       <p>Listening: {listening ? 'Yes' : 'No'}</p>
 
       <button onClick={handleStart} >
@@ -44,6 +51,7 @@ const SpeechRecognitionComponent = () => {
       <button onClick={handleReset}>
         Reset Transcript
       </button>
+      <TextEditing transcribedText={transcript} />
     </div>
   );
 };

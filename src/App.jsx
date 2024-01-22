@@ -4,14 +4,21 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import 'regenerator-runtime/runtime'
 import SpeechRecognitionComponent from './components/SpeechRecognition'
+import TextEditing from './components/TextEditing'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+    const [transcript, setTranscript] = useState('');
+
+  const handleTranscriptionChange = (newTranscription) => {
+    setTranscript(newTranscription);
+  };
 
   return (
     
         <div>
-      <SpeechRecognitionComponent />
+      <SpeechRecognitionComponent onTranscriptionChange = {handleTranscriptionChange} />
+      < TextEditing transcribedText={transcript}/>
     </div>
   
   )
