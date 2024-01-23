@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import TextEditing from './TextEditing';
 
-const SpeechRecognitionComponent = ({onTranscriptionChange}) => {
+const SpeechRecognitionComponent = ({onTranscriptionChange,onTextChange}) => {
   const {
     transcript,
       browserSupportsSpeechRecognition,
@@ -51,7 +51,7 @@ const SpeechRecognitionComponent = ({onTranscriptionChange}) => {
       <button onClick={handleReset}>
         Reset Transcript
       </button>
-      <TextEditing transcribedText={transcript} />
+      <TextEditing transcribedText={transcript} onTextChange={onTextChange} />
     </div>
   );
 };
