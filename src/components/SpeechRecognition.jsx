@@ -20,7 +20,7 @@ const SpeechRecognitionComponent = ({onTranscriptionChange,onTextChange}) => {
    }, [transcript, onTranscriptionChange]);
   
   
-    console.log(transcript)
+    console.log("Transcript: ",transcript)
   const handleStart = () => {
      SpeechRecognition.startListening({
   continuous: true,

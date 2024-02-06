@@ -1,13 +1,22 @@
 import React from "react";
 import jsPDF from "jspdf";
+import html2pdf from 'html2pdf.js';
+
 
 const PdfCreation = ({ textContent }) => {
+    //   const sanitizeHtml = (html) => {
+    // const doc = new DOMParser().parseFromString(html, 'text/html');
+    // return doc.body.textContent || "";
+//   };
     const handleCreatePdf = () => {
-        const pdfDoc = new jsPDF();
 
-        pdfDoc.text(textContent, 10, 10)
+        // const sanitizedText = sanitizeHtml(textContent)
+        // const pdfDoc = new jsPDF();
+
+        // pdfDoc.text(sanitizedText, 10, 10)
         
-        pdfDoc.save("generated_doc.pdf")
+        // pdfDoc.save("generated_doc.pdf")
+         html2pdf().from(textContent).save();
     }
 
     return (

@@ -15,6 +15,8 @@ const TextEditing = ({ transcribedText,onTextChange  }) => {
     setText(value);
     onTextChange(value);
   };
+  console.log("Trnascribed text: ",transcribedText)
+  console.log("Text: ",text)
 
   return (
     <div>
